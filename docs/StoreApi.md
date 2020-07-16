@@ -1,6 +1,6 @@
 # StoreApi
 
-All URIs are relative to *http://petstore.swagger.io/v2*
+All URIs are relative to */*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
@@ -15,7 +15,7 @@ Method | HTTP request | Description
 
 Delete purchase order by ID
 
-For valid response try integer IDs with value &lt; 1000. Anything above 1000 or nonintegers will generate API errors
+For valid response try integer IDs with positive integer value.\\ \\ Negative or non-integer values will generate API errors
 
 ### Example
 ```java
@@ -25,7 +25,7 @@ For valid response try integer IDs with value &lt; 1000. Anything above 1000 or 
 
 
 StoreApi apiInstance = new StoreApi();
-String orderId = "orderId_example"; // String | ID of the order that needs to be deleted
+Long orderId = 789L; // Long | ID of the order that needs to be deleted
 try {
     apiInstance.deleteOrder(orderId);
 } catch (ApiException e) {
@@ -38,7 +38,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **orderId** | **String**| ID of the order that needs to be deleted |
+ **orderId** | **Long**| ID of the order that needs to be deleted | [enum: ]
 
 ### Return type
 
@@ -102,7 +102,7 @@ This endpoint does not need any parameter.
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: application/json, application/xml
+ - **Accept**: application/json
 
 <a name="getOrderById"></a>
 # **getOrderById**
@@ -110,7 +110,7 @@ This endpoint does not need any parameter.
 
 Find purchase order by ID
 
-For valid response try integer IDs with value &lt;&#x3D; 5 or &gt; 10. Other values will generated exceptions
+For valid response try integer IDs with value &gt;&#x3D; 1 and &lt;&#x3D; 10.\\ \\ Other values will generated exceptions
 
 ### Example
 ```java
@@ -120,7 +120,7 @@ For valid response try integer IDs with value &lt;&#x3D; 5 or &gt; 10. Other val
 
 
 StoreApi apiInstance = new StoreApi();
-String orderId = "orderId_example"; // String | ID of pet that needs to be fetched
+Long orderId = 789L; // Long | ID of pet that needs to be fetched
 try {
     Order result = apiInstance.getOrderById(orderId);
     System.out.println(result);
@@ -134,7 +134,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **orderId** | **String**| ID of pet that needs to be fetched |
+ **orderId** | **Long**| ID of pet that needs to be fetched | [enum: ]
 
 ### Return type
 
@@ -177,7 +177,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **body** | [**Order**](Order.md)| order placed for purchasing the pet | [optional]
+ **body** | [**Order**](Order.md)| order placed for purchasing the pet |
 
 ### Return type
 
@@ -189,6 +189,6 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: */*
+ - **Content-Type**: application/json
  - **Accept**: application/json, application/xml
 

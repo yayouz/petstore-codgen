@@ -22,51 +22,30 @@ import com.google.gson.stream.JsonWriter;
 import io.swagger.v3.oas.annotations.media.Schema;
 import java.io.IOException;
 /**
- * Tag
+ * SinglePetResponse
  */
 
 @javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaClientCodegen", date = "2020-07-16T20:30:48.315079Z[UTC]")
-public class Tag {
-  @SerializedName("id")
-  private Long id = null;
+public class SinglePetResponse {
+  @SerializedName("pet")
+  private OneOfSinglePetResponsePet pet = null;
 
-  @SerializedName("name")
-  private String name = null;
-
-  public Tag id(Long id) {
-    this.id = id;
+  public SinglePetResponse pet(OneOfSinglePetResponsePet pet) {
+    this.pet = pet;
     return this;
   }
 
    /**
-   * Get id
-   * @return id
+   * Get pet
+   * @return pet
   **/
   @Schema(description = "")
-  public Long getId() {
-    return id;
+  public OneOfSinglePetResponsePet getPet() {
+    return pet;
   }
 
-  public void setId(Long id) {
-    this.id = id;
-  }
-
-  public Tag name(String name) {
-    this.name = name;
-    return this;
-  }
-
-   /**
-   * Get name
-   * @return name
-  **/
-  @Schema(description = "")
-  public String getName() {
-    return name;
-  }
-
-  public void setName(String name) {
-    this.name = name;
+  public void setPet(OneOfSinglePetResponsePet pet) {
+    this.pet = pet;
   }
 
 
@@ -78,24 +57,22 @@ public class Tag {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    Tag tag = (Tag) o;
-    return Objects.equals(this.id, tag.id) &&
-        Objects.equals(this.name, tag.name);
+    SinglePetResponse singlePetResponse = (SinglePetResponse) o;
+    return Objects.equals(this.pet, singlePetResponse.pet);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, name);
+    return Objects.hash(pet);
   }
 
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class Tag {\n");
+    sb.append("class SinglePetResponse {\n");
     
-    sb.append("    id: ").append(toIndentedString(id)).append("\n");
-    sb.append("    name: ").append(toIndentedString(name)).append("\n");
+    sb.append("    pet: ").append(toIndentedString(pet)).append("\n");
     sb.append("}");
     return sb.toString();
   }

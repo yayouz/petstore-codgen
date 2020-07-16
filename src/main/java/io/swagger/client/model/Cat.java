@@ -19,54 +19,58 @@ import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
+import io.swagger.client.model.Category;
+import io.swagger.client.model.Pet;
+import io.swagger.client.model.Tag;
 import io.swagger.v3.oas.annotations.media.Schema;
 import java.io.IOException;
+import java.util.List;
 /**
- * Tag
+ * Cat
  */
 
 @javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaClientCodegen", date = "2020-07-16T20:30:48.315079Z[UTC]")
-public class Tag {
-  @SerializedName("id")
-  private Long id = null;
+public class Cat extends Pet implements OneOfAllPetsResponseItems, OneOfSinglePetResponsePet {
+  @SerializedName("hunts")
+  private Boolean hunts = null;
 
-  @SerializedName("name")
-  private String name = null;
+  @SerializedName("age")
+  private Integer age = null;
 
-  public Tag id(Long id) {
-    this.id = id;
+  public Cat hunts(Boolean hunts) {
+    this.hunts = hunts;
     return this;
   }
 
    /**
-   * Get id
-   * @return id
+   * Get hunts
+   * @return hunts
   **/
   @Schema(description = "")
-  public Long getId() {
-    return id;
+  public Boolean isHunts() {
+    return hunts;
   }
 
-  public void setId(Long id) {
-    this.id = id;
+  public void setHunts(Boolean hunts) {
+    this.hunts = hunts;
   }
 
-  public Tag name(String name) {
-    this.name = name;
+  public Cat age(Integer age) {
+    this.age = age;
     return this;
   }
 
    /**
-   * Get name
-   * @return name
+   * Get age
+   * @return age
   **/
   @Schema(description = "")
-  public String getName() {
-    return name;
+  public Integer getAge() {
+    return age;
   }
 
-  public void setName(String name) {
-    this.name = name;
+  public void setAge(Integer age) {
+    this.age = age;
   }
 
 
@@ -78,24 +82,25 @@ public class Tag {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    Tag tag = (Tag) o;
-    return Objects.equals(this.id, tag.id) &&
-        Objects.equals(this.name, tag.name);
+    Cat cat = (Cat) o;
+    return Objects.equals(this.hunts, cat.hunts) &&
+        Objects.equals(this.age, cat.age) &&
+        super.equals(o);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, name);
+    return Objects.hash(hunts, age, super.hashCode());
   }
 
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class Tag {\n");
-    
-    sb.append("    id: ").append(toIndentedString(id)).append("\n");
-    sb.append("    name: ").append(toIndentedString(name)).append("\n");
+    sb.append("class Cat {\n");
+    sb.append("    ").append(toIndentedString(super.toString())).append("\n");
+    sb.append("    hunts: ").append(toIndentedString(hunts)).append("\n");
+    sb.append("    age: ").append(toIndentedString(age)).append("\n");
     sb.append("}");
     return sb.toString();
   }

@@ -1,14 +1,17 @@
 # PetApi
 
-All URIs are relative to *http://petstore.swagger.io/v2*
+All URIs are relative to */*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**addPet**](PetApi.md#addPet) | **POST** /pet | Add a new pet to the store
 [**deletePet**](PetApi.md#deletePet) | **DELETE** /pet/{petId} | Deletes a pet
+[**doCategoryStuff**](PetApi.md#doCategoryStuff) | **POST** /pet/category | 
 [**findPetsByStatus**](PetApi.md#findPetsByStatus) | **GET** /pet/findByStatus | Finds Pets by status
 [**findPetsByTags**](PetApi.md#findPetsByTags) | **GET** /pet/findByTags | Finds Pets by tags
+[**getAllPets**](PetApi.md#getAllPets) | **GET** /allPets | 
 [**getPetById**](PetApi.md#getPetById) | **GET** /pet/{petId} | Find pet by ID
+[**getRandomPet**](PetApi.md#getRandomPet) | **GET** /randomPet | 
 [**updatePet**](PetApi.md#updatePet) | **PUT** /pet | Update an existing pet
 [**updatePetWithForm**](PetApi.md#updatePetWithForm) | **POST** /pet/{petId} | Updates a pet in the store with form data
 [**uploadFile**](PetApi.md#uploadFile) | **POST** /pet/{petId}/uploadImage | uploads an image
@@ -48,7 +51,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **body** | [**Pet**](Pet.md)| Pet object that needs to be added to the store | [optional]
+ **body** | [**Pet**](Pet.md)| Pet object that needs to be added to the store |
 
 ### Return type
 
@@ -115,6 +118,49 @@ null (empty response body)
  - **Content-Type**: Not defined
  - **Accept**: Not defined
 
+<a name="doCategoryStuff"></a>
+# **doCategoryStuff**
+> ModelApiResponse doCategoryStuff(body)
+
+
+
+### Example
+```java
+// Import classes:
+//import io.swagger.client.ApiException;
+//import io.swagger.client.api.PetApi;
+
+
+PetApi apiInstance = new PetApi();
+SubCategory body = new SubCategory(); // SubCategory | 
+try {
+    ModelApiResponse result = apiInstance.doCategoryStuff(body);
+    System.out.println(result);
+} catch (ApiException e) {
+    System.err.println("Exception when calling PetApi#doCategoryStuff");
+    e.printStackTrace();
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **body** | [**SubCategory**](SubCategory.md)|  | [optional]
+
+### Return type
+
+[**ModelApiResponse**](ModelApiResponse.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
 <a name="findPetsByStatus"></a>
 # **findPetsByStatus**
 > List&lt;Pet&gt; findPetsByStatus(status)
@@ -153,7 +199,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **status** | [**List&lt;String&gt;**](String.md)| Status values that need to be considered for filter | [optional] [enum: available, pending, sold]
+ **status** | [**List&lt;String&gt;**](String.md)| Status values that need to be considered for filter | [enum: available, pending, sold]
 
 ### Return type
 
@@ -174,7 +220,7 @@ Name | Type | Description  | Notes
 
 Finds Pets by tags
 
-Multiple tags can be provided with comma separated strings. Use tag1, tag2, tag3 for testing.
+Muliple tags can be provided with comma separated strings. Use\\ \\ tag1, tag2, tag3 for testing.
 
 ### Example
 ```java
@@ -206,7 +252,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **tags** | [**List&lt;String&gt;**](String.md)| Tags to filter by | [optional]
+ **tags** | [**List&lt;String&gt;**](String.md)| Tags to filter by |
 
 ### Return type
 
@@ -221,13 +267,52 @@ Name | Type | Description  | Notes
  - **Content-Type**: Not defined
  - **Accept**: application/json, application/xml
 
+<a name="getAllPets"></a>
+# **getAllPets**
+> AllPetsResponse getAllPets()
+
+
+
+### Example
+```java
+// Import classes:
+//import io.swagger.client.ApiException;
+//import io.swagger.client.api.PetApi;
+
+
+PetApi apiInstance = new PetApi();
+try {
+    AllPetsResponse result = apiInstance.getAllPets();
+    System.out.println(result);
+} catch (ApiException e) {
+    System.err.println("Exception when calling PetApi#getAllPets");
+    e.printStackTrace();
+}
+```
+
+### Parameters
+This endpoint does not need any parameter.
+
+### Return type
+
+[**AllPetsResponse**](AllPetsResponse.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
 <a name="getPetById"></a>
 # **getPetById**
 > Pet getPetById(petId)
 
 Find pet by ID
 
-Returns a pet when ID &lt; 10.  ID &gt; 10 or nonintegers will simulate API error conditions
+Returns a single pet
 
 ### Example
 ```java
@@ -246,12 +331,8 @@ api_key.setApiKey("YOUR API KEY");
 // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
 //api_key.setApiKeyPrefix("Token");
 
-// Configure OAuth2 access token for authorization: petstore_auth
-OAuth petstore_auth = (OAuth) defaultClient.getAuthentication("petstore_auth");
-petstore_auth.setAccessToken("YOUR ACCESS TOKEN");
-
 PetApi apiInstance = new PetApi();
-Long petId = 789L; // Long | ID of pet that needs to be fetched
+Long petId = 789L; // Long | ID of pet to return
 try {
     Pet result = apiInstance.getPetById(petId);
     System.out.println(result);
@@ -265,7 +346,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **petId** | **Long**| ID of pet that needs to be fetched |
+ **petId** | **Long**| ID of pet to return |
 
 ### Return type
 
@@ -273,12 +354,51 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key)[petstore_auth](../README.md#petstore_auth)
+[api_key](../README.md#api_key)
 
 ### HTTP request headers
 
  - **Content-Type**: Not defined
  - **Accept**: application/json, application/xml
+
+<a name="getRandomPet"></a>
+# **getRandomPet**
+> SinglePetResponse getRandomPet()
+
+
+
+### Example
+```java
+// Import classes:
+//import io.swagger.client.ApiException;
+//import io.swagger.client.api.PetApi;
+
+
+PetApi apiInstance = new PetApi();
+try {
+    SinglePetResponse result = apiInstance.getRandomPet();
+    System.out.println(result);
+} catch (ApiException e) {
+    System.err.println("Exception when calling PetApi#getRandomPet");
+    e.printStackTrace();
+}
+```
+
+### Parameters
+This endpoint does not need any parameter.
+
+### Return type
+
+[**SinglePetResponse**](SinglePetResponse.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
 
 <a name="updatePet"></a>
 # **updatePet**
@@ -315,7 +435,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **body** | [**Pet**](Pet.md)| Pet object that needs to be added to the store | [optional]
+ **body** | [**Pet**](Pet.md)| Pet object that needs to be added to the store |
 
 ### Return type
 
@@ -352,7 +472,7 @@ OAuth petstore_auth = (OAuth) defaultClient.getAuthentication("petstore_auth");
 petstore_auth.setAccessToken("YOUR ACCESS TOKEN");
 
 PetApi apiInstance = new PetApi();
-String petId = "petId_example"; // String | ID of pet that needs to be updated
+Long petId = 789L; // Long | ID of pet that needs to be updated
 String name = "name_example"; // String | 
 String status = "status_example"; // String | 
 try {
@@ -367,7 +487,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **petId** | **String**| ID of pet that needs to be updated |
+ **petId** | **Long**| ID of pet that needs to be updated |
  **name** | **String**|  | [optional]
  **status** | **String**|  | [optional]
 
@@ -386,7 +506,7 @@ null (empty response body)
 
 <a name="uploadFile"></a>
 # **uploadFile**
-> uploadFile(petId, additionalMetadata, file)
+> ModelApiResponse uploadFile(petId, body)
 
 uploads an image
 
@@ -407,10 +527,10 @@ petstore_auth.setAccessToken("YOUR ACCESS TOKEN");
 
 PetApi apiInstance = new PetApi();
 Long petId = 789L; // Long | ID of pet to update
-String additionalMetadata = "additionalMetadata_example"; // String | 
-File file = new File("file_example"); // File | 
+Object body = null; // Object | 
 try {
-    apiInstance.uploadFile(petId, additionalMetadata, file);
+    ModelApiResponse result = apiInstance.uploadFile(petId, body);
+    System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling PetApi#uploadFile");
     e.printStackTrace();
@@ -422,12 +542,11 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **petId** | **Long**| ID of pet to update |
- **additionalMetadata** | **String**|  | [optional]
- **file** | **File**|  | [optional]
+ **body** | **Object**|  | [optional]
 
 ### Return type
 
-null (empty response body)
+[**ModelApiResponse**](ModelApiResponse.md)
 
 ### Authorization
 
@@ -435,6 +554,6 @@ null (empty response body)
 
 ### HTTP request headers
 
- - **Content-Type**: multipart/form-data
- - **Accept**: Not defined
+ - **Content-Type**: application/octet-stream
+ - **Accept**: application/json
 

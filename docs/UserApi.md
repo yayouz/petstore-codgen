@@ -1,6 +1,6 @@
 # UserApi
 
-All URIs are relative to *http://petstore.swagger.io/v2*
+All URIs are relative to */*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
@@ -11,7 +11,7 @@ Method | HTTP request | Description
 [**getUserByName**](UserApi.md#getUserByName) | **GET** /user/{username} | Get user by user name
 [**loginUser**](UserApi.md#loginUser) | **GET** /user/login | Logs user into the system
 [**logoutUser**](UserApi.md#logoutUser) | **GET** /user/logout | Logs out current logged in user session
-[**updateUser**](UserApi.md#updateUser) | **PUT** /user/{username} | Updated user
+[**userUsernamePut**](UserApi.md#userUsernamePut) | **PUT** /user/{username} | Updated user
 
 <a name="createUser"></a>
 # **createUser**
@@ -42,7 +42,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **body** | [**User**](User.md)| Created user object | [optional]
+ **body** | [**User**](User.md)| Created user object |
 
 ### Return type
 
@@ -54,7 +54,7 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: */*
+ - **Content-Type**: application/json
  - **Accept**: Not defined
 
 <a name="createUsersWithArrayInput"></a>
@@ -84,7 +84,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **body** | [**List&lt;User&gt;**](User.md)| List of user object | [optional]
+ **body** | [**List&lt;User&gt;**](User.md)| List of user object |
 
 ### Return type
 
@@ -96,7 +96,7 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: */*
+ - **Content-Type**: application/json
  - **Accept**: Not defined
 
 <a name="createUsersWithListInput"></a>
@@ -126,7 +126,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **body** | [**List&lt;User&gt;**](User.md)| List of user object | [optional]
+ **body** | [**List&lt;User&gt;**](User.md)| List of user object |
 
 ### Return type
 
@@ -138,7 +138,7 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: */*
+ - **Content-Type**: application/json
  - **Accept**: Not defined
 
 <a name="deleteUser"></a>
@@ -199,7 +199,7 @@ Get user by user name
 
 
 UserApi apiInstance = new UserApi();
-String username = "username_example"; // String | The name that needs to be fetched. Use user1 for testing. 
+String username = "username_example"; // String | The name that needs to be fetched. Use user1 for testing.
 try {
     User result = apiInstance.getUserByName(username);
     System.out.println(result);
@@ -213,7 +213,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **username** | **String**| The name that needs to be fetched. Use user1 for testing.  |
+ **username** | **String**| The name that needs to be fetched. Use user1 for testing. |
 
 ### Return type
 
@@ -257,8 +257,8 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **username** | **String**| The user name for login | [optional]
- **password** | **String**| The password for login in clear text | [optional]
+ **username** | **String**| The user name for login |
+ **password** | **String**| The password for login in clear text |
 
 ### Return type
 
@@ -311,9 +311,9 @@ No authorization required
  - **Content-Type**: Not defined
  - **Accept**: Not defined
 
-<a name="updateUser"></a>
-# **updateUser**
-> updateUser(username, body)
+<a name="userUsernamePut"></a>
+# **userUsernamePut**
+> userUsernamePut(body, username)
 
 Updated user
 
@@ -327,12 +327,12 @@ This can only be done by the logged in user.
 
 
 UserApi apiInstance = new UserApi();
-String username = "username_example"; // String | name that need to be deleted
 User body = new User(); // User | Updated user object
+String username = "username_example"; // String | name that need to be updated
 try {
-    apiInstance.updateUser(username, body);
+    apiInstance.userUsernamePut(body, username);
 } catch (ApiException e) {
-    System.err.println("Exception when calling UserApi#updateUser");
+    System.err.println("Exception when calling UserApi#userUsernamePut");
     e.printStackTrace();
 }
 ```
@@ -341,8 +341,8 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **username** | **String**| name that need to be deleted |
- **body** | [**User**](User.md)| Updated user object | [optional]
+ **body** | [**User**](User.md)| Updated user object |
+ **username** | **String**| name that need to be updated |
 
 ### Return type
 
@@ -354,6 +354,6 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: */*
+ - **Content-Type**: application/json
  - **Accept**: Not defined
 
