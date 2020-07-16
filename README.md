@@ -1,2 +1,2 @@
-# petstore-perl
+# petstore-codegen
 demo repo for api codeGen
